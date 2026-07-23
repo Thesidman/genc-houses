@@ -10,34 +10,22 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--void:#02010a;--gold:#c9a84c;--gold-d:rgba(201,168,76,.3);--glass:rgba(255,255,255,.04);--border:rgba(255,255,255,.07);--border-g:rgba(201,168,76,.35);--text:rgba(232,224,255,.9)}
     html,body{width:100%;height:100%;overflow:hidden;background:var(--void);color:var(--text);font-family:'Rajdhani',sans-serif;cursor:none}
-
-    /* CANVASES */
     #cv-bg,#cv-fx,#cv-at,#cv-cf,#cv-cur{position:fixed;inset:0;pointer-events:none}
     #cv-bg{z-index:1}#cv-fx{z-index:2}#cv-at{z-index:5;opacity:0;transition:opacity 1s}#cv-at.on{opacity:1}
     #cv-cf{z-index:22}#cv-cur{z-index:100}
-
-    /* FLASH */
     #flash{position:fixed;inset:0;z-index:50;opacity:0;pointer-events:none;transition:opacity .08s}
     #flash.bang{opacity:1}#flash.fade{opacity:0;transition:opacity 1.2s}
-
-    /* SCREEN SHAKE */
     @keyframes shake{0%,100%{transform:translate(0)}10%{transform:translate(-7px,-3px) rotate(-.3deg)}20%{transform:translate(7px,3px) rotate(.3deg)}30%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}50%{transform:translate(-3px,1px)}60%{transform:translate(3px,-1px)}70%{transform:translate(-2px,.5px)}80%{transform:translate(2px,-.5px)}90%{transform:translate(-1px,.3px)}}
     body.shake{animation:shake .65s cubic-bezier(.36,.07,.19,.97)}
-
-    /* GHOST SILHOUETTES */
     #ghosts{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.04;filter:blur(3px) grayscale(1) brightness(.25)}
     .ghost-img{position:absolute;width:38vw;max-width:360px}
-
-    /* RITUAL */
     #ritual{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;background:var(--void);transition:opacity .8s}
     #ritual.out{opacity:0;pointer-events:none}
     #rc{width:min(460px,88vw);height:min(460px,88vw)}
-
-    /* SCREENS */
     .scr{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .55s}
     .scr.off{opacity:0;pointer-events:none}
 
-    /* ═══ ACT I ═══ */
+    /* ACT I */
     #sel{padding:2rem 1.5rem;overflow:hidden}
     .ey{font-family:'Orbitron',monospace;font-size:clamp(.42rem,.9vw,.58rem);letter-spacing:.7em;color:rgba(201,168,76,.42);text-align:center;margin-bottom:.55rem;opacity:0;animation:fui 1s ease .3s forwards}
     h1.tt{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2rem,5.5vw,4.2rem);letter-spacing:.3em;text-align:center;background:linear-gradient(140deg,#fff7e6 0%,#c9a84c 30%,#fff 55%,#a8c8ff 80%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:300% 100%;animation:shimmer 7s ease-in-out infinite,fui 1s ease .5s backwards;filter:drop-shadow(0 0 35px rgba(201,168,76,.35))}
@@ -66,7 +54,7 @@
     @keyframes ncb{to{transform:scale(.05) rotate(20deg) translateY(-30px);opacity:0;filter:blur(6px)}}
     @keyframes ncc{20%{transform:scale(1.15) translateY(-8px);border-color:var(--gold);box-shadow:0 0 60px rgba(201,168,76,.9)}50%{transform:scale(1.3) translateY(-20px)}100%{transform:scale(0) rotate(-12deg);opacity:0}}
 
-    /* ═══ ACT II ORACLE ═══ */
+    /* ACT II ORACLE */
     #orc{gap:1.4rem;background:rgba(2,1,10,.95);backdrop-filter:blur(24px)}
     .sl{position:absolute;left:0;right:0;height:1px;top:0;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6) 35%,rgba(255,255,255,.95) 50%,rgba(201,168,76,.6) 65%,transparent);animation:slm 2.2s ease-in-out infinite}
     @keyframes slm{0%{top:0;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:100%;opacity:0}}
@@ -80,7 +68,15 @@
     #os{font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:.4em;color:rgba(201,168,76,.7);text-align:center;max-width:320px;transition:opacity .25s}
     #on{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;color:#fff;letter-spacing:.2em;text-shadow:0 0 50px rgba(255,255,255,.45);text-align:center}
 
-    /* ═══ ACT II.5 VERDICT ═══ */
+    /* Voiceover status bar */
+    #vo-bar{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.7rem;opacity:0;transition:opacity .4s}
+    #vo-bar.on{opacity:1}
+    .vo-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:vodot 1.2s ease-in-out infinite}
+    .vo-dot:nth-child(2){animation-delay:.2s}.vo-dot:nth-child(3){animation-delay:.4s}
+    @keyframes vodot{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(2.2);opacity:1}}
+    #vo-txt{font-family:'Orbitron',monospace;font-size:.52rem;letter-spacing:.35em;color:rgba(201,168,76,.65)}
+
+    /* ACT II.5 VERDICT */
     #verd{z-index:16;background:#000;gap:0}
     .lb{position:absolute;left:0;right:0;height:11%;background:#000;z-index:2;transition:transform .75s cubic-bezier(.77,0,.18,1)}
     #lbt{top:0;transform:translateY(-100%)}#lbb{bottom:0;transform:translateY(100%)}
@@ -98,7 +94,7 @@
     #vc{position:absolute;left:0;right:0;top:50%;height:3px;transform:scaleX(0) translateY(-50%);transform-origin:center;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),#fff,rgba(255,255,255,.6),transparent);box-shadow:0 0 22px 5px rgba(255,255,255,.5),0 0 70px 12px rgba(255,255,255,.15);z-index:4;transition:transform .65s cubic-bezier(.34,1.56,.64,1)}
     #vc.on{transform:scaleX(1) translateY(-50%)}
 
-    /* ═══ ACT III REVEAL ═══ */
+    /* ACT III REVEAL */
     #rev{gap:.9rem}
     #rb{position:absolute;inset:0;opacity:0;transition:opacity 1.6s}#rb.on{opacity:1}
     .shw{position:absolute;width:8px;height:8px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);pointer-events:none;animation:shwex 2s ease-out forwards}
@@ -125,7 +121,6 @@
 <canvas id="cv-cf"></canvas><canvas id="cv-cur"></canvas>
 <div id="flash"></div>
 
-<!-- Ghost silhouettes -->
 <div id="ghosts">
   <img class="ghost-img" src="myrith.jpg" style="right:-5%;top:5%;transform:scaleX(-1)">
   <img class="ghost-img" src="orvane.jpg" style="left:-5%;bottom:5%">
@@ -133,7 +128,6 @@
   <img class="ghost-img" src="syvora.jpg" style="left:5%;top:-5%">
 </div>
 
-<!-- RITUAL INTRO -->
 <div id="ritual"><canvas id="rc"></canvas></div>
 
 <!-- ACT I: SELECTION -->
@@ -174,6 +168,11 @@
   </div>
   <div id="os">AWAITING AETHERIC SIGNATURE...</div>
   <div id="on"></div>
+  <!-- Voiceover playing indicator -->
+  <div id="vo-bar">
+    <div class="vo-dot"></div><div class="vo-dot"></div><div class="vo-dot"></div>
+    <div id="vo-txt">THE ORACLE SPEAKS</div>
+  </div>
 </div>
 
 <!-- ACT II.5: VERDICT -->
@@ -198,16 +197,93 @@
 
 <script>
 // ═══════════════════════════════════════════════════
-//  HOUSE DATA
+//  ELEVENLABS CONFIG
 // ═══════════════════════════════════════════════════
-const H={
-  MYRITH:{members:['Neha','Sameer','Pradipta','Taher','Sneha'],img:'myrith.jpg',color:'#4a7aff',glow:'rgba(74,122,255,.55)',particles:['#4a7aff','#D4AF37','#a8c8ff','#fffde7','#c9a84c','#fff'],atmo:'stars',chord:[130.81,164.81,196,261.63,329.63,392,523.25],tagline:'THE STARS HAVE ALIGNED FOR YOU'},
-  ORVANE:{members:['Ojas','Avikalp','Manish','Saran','Samarth'],img:'orvane.jpg',color:'#00d4ff',glow:'rgba(0,212,255,.55)',particles:['#00d4ff','#00ffff','#0096c7','#e0f7fa','#fff','#80ffff'],atmo:'water',chord:[87.31,110,130.81,174.61,220,261.63,349.23],tagline:'THE DEEP WATERS CLAIM YOU'},
-  KAELIX:{members:['Nitin','Soundarya','Chanakya','Jenil','Himanshu','Rachit'],img:'kaelix.jpg',color:'#1e90ff',glow:'rgba(30,144,255,.6)',particles:['#1e90ff','#00bfff','#fff','#87ceeb','#4169e1','#aaddff'],atmo:'lightning',chord:[73.42,92.5,110,146.83,185,220,293.66],tagline:'THE STORM HAS CHOSEN ITS WARRIOR'},
-  SYVORA:{members:['Sangam','Sailee','Ahan','Parikshit','Prathibha'],img:'syvora.jpg',color:'#b060ff',glow:'rgba(176,96,255,.55)',particles:['#9b59b6','#c77dff','#e8b4ff','#fff','#7b2fff','#d3a9ff'],atmo:'aurora',chord:[98,123.47,146.83,196,246.94,293.66,392],tagline:'THE MOON WHISPERS YOUR NAME'}
+const EL_KEY     = 'f0251252c52e1fc47f2419ad9c1b369aa862c2d1c7020dd0f965afe1e937feab';
+const EL_VOICE   = 'AsDeXBMC8hUkhqqL7agO';
+const EL_MODEL   = 'eleven_multilingual_v2';
+
+// ═══════════════════════════════════════════════════
+//  HOUSE DATA + VOICEOVER SCRIPTS
+// ═══════════════════════════════════════════════════
+const VOICES = {
+  // MYRITH
+  'neha':     `Neha. A software developer who craves calm, intentional aesthetics over lines of code. The Oracle has reached into the aether... and the answer is clear. You belong to MYRITH.`,
+  'sameer':   `Sameer. A product designer crafting perfect psychological journeys while wrestling with perfectionism. The Oracle has spoken. The stars align for you in MYRITH.`,
+  'pradipta': `Pradipta. A tech architect ready to build wild pathways into neuroscience and philosophy. Endless curiosity, deep-dive theories — your house awaits. You are MYRITH.`,
+  'taher':    `Taher. An architecture student building beautiful animated stories instead of just buildings. The Oracle sees your path. You are MYRITH.`,
+  'sneha':    `Sneha. A product manager ready to hack her way into the biggest rooms in tech. The Oracle has aligned the stars in your name. You belong to MYRITH.`,
+  'sachit':   `Sachit. A real estate mogul, a computer science engineer, an AI innovator — with the energy of a Bollywood-connected visionary. The Oracle knows exactly where this force belongs. You are MYRITH.`,
+  // ORVANE
+  'ojas':     `Ojas. An eighteen-year-old AI founder shipping products faster than most people send texts. The deep waters have chosen their prodigy. You are ORVANE.`,
+  'avikalp':  `Avikalp. Building autonomous cargo ships, demanding solid ROI on every move. The Oracle has found your harbour. You belong to ORVANE.`,
+  'manish':   `Manish. Agency hustle. A deep love for making science and startups look effortlessly cool. The Oracle has charted your course. You are ORVANE.`,
+  'saran':    `Saran. A lazy genius who wants to build artificial intelligence empires without leaving the couch. The deep current has claimed you. You are ORVANE.`,
+  'samarth':  `Samarth. A businessman searching for ultimate discipline to build a slick, unfiltered brand. The Oracle has opened your boardroom doors. You belong to ORVANE.`,
+  // KAELIX
+  'nitin':    `Nitin. The home appliance visionary who wants to make refrigerators look like absolute cinema. The storm recognises a warrior. You are KAELIX.`,
+  'soundarya':`Soundarya. Building robots and AI posture-checkers just for the absolute plot of it. Raw engineering turned into cinematic magic. The storm has chosen you. You are KAELIX.`,
+  'chanakya': `Chanakya. A full-stack vibe coder, a lawyer, a connector of worlds through language. Profound, street-level, unstoppable. The storm has spoken. You are KAELIX.`,
+  'jenil':    `Jenil. Running a dubbing agency, but ready to find your own loud, unapologetic voice. The Oracle sees the Hormozi-level truth bomb within you. You are KAELIX.`,
+  'himanshu': `Himanshu. An architect constructing sleek, analytical educational masterpieces. Crisp design. Solid foundations. The storm claims its own. You are KAELIX.`,
+  'rachit':   `Rachit. A product manager ready to manage his own ultimate glow-up. Fitness, global affairs, mastery of everything. The storm has chosen its warrior. You are KAELIX.`,
+  // SYVORA
+  'sangam':   `Sangam. A filmmaker with a serious itch for crafting the perfect comedy sketch. Always plotting the next punchline. The moon has lit your stage. You are SYVORA.`,
+  'sailee':   `Sailee. A content strategist who knows the whole game, but lets brilliance speak for itself. The Oracle appreciates your elegant simplicity. You are SYVORA.`,
+  'ahan':     `Ahan. Chasing a ten-billion-dollar market with game theory and Bryan Johnson-level biohacking. Ready to outsmart the algorithm entirely. The moon whispers your name. You are SYVORA.`,
+  'parikshit':`Parikshit. An AI-assisted builder and automation wizard aiming for cinematic thought leadership. Hacking masterpieces from thin air. The moon has chosen you. You are SYVORA.`,
+  'prathibha':`Prathibha. A business coach selling the ultimate real estate storytelling. Ambition, structure, and killer scripts. The moon has always known your name. You are SYVORA.`,
+};
+
+const H = {
+  MYRITH:{ members:['Neha','Sameer','Pradipta','Taher','Sneha','Sachit'], img:'myrith.jpg', color:'#4a7aff', glow:'rgba(74,122,255,.55)', particles:['#4a7aff','#D4AF37','#a8c8ff','#fffde7','#c9a84c','#fff'], atmo:'stars', chord:[130.81,164.81,196,261.63,329.63,392,523.25], tagline:'THE STARS HAVE ALIGNED FOR YOU' },
+  ORVANE:{ members:['Ojas','Avikalp','Manish','Saran','Samarth'],          img:'orvane.jpg', color:'#00d4ff', glow:'rgba(0,212,255,.55)', particles:['#00d4ff','#00ffff','#0096c7','#e0f7fa','#fff','#80ffff'], atmo:'water', chord:[87.31,110,130.81,174.61,220,261.63,349.23], tagline:'THE DEEP WATERS CLAIM YOU' },
+  KAELIX:{ members:['Nitin','Soundarya','Chanakya','Jenil','Himanshu','Rachit'], img:'kaelix.jpg', color:'#1e90ff', glow:'rgba(30,144,255,.6)', particles:['#1e90ff','#00bfff','#fff','#87ceeb','#4169e1','#aaddff'], atmo:'lightning', chord:[73.42,92.5,110,146.83,185,220,293.66], tagline:'THE STORM HAS CHOSEN ITS WARRIOR' },
+  SYVORA:{ members:['Sangam','Sailee','Ahan','Parikshit','Prathibha'],     img:'syvora.jpg', color:'#b060ff', glow:'rgba(176,96,255,.55)', particles:['#9b59b6','#c77dff','#e8b4ff','#fff','#7b2fff','#d3a9ff'], atmo:'aurora', chord:[98,123.47,146.83,196,246.94,293.66,392], tagline:'THE MOON WHISPERS YOUR NAME' }
 };
 const NM={};
 for(const[k,d]of Object.entries(H))d.members.forEach(n=>NM[n.toLowerCase()]=k);
+
+// ═══════════════════════════════════════════════════
+//  ELEVENLABS TTS
+// ═══════════════════════════════════════════════════
+let currentAudio = null;
+
+async function fetchVoiceover(name) {
+  const script = VOICES[name.toLowerCase()] || `${name}. The Oracle has spoken. Your house has been revealed.`;
+  try {
+    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE}/stream`, {
+      method: 'POST',
+      headers: { 'xi-api-key': EL_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: script,
+        model_id: EL_MODEL,
+        voice_settings: { stability: 0.42, similarity_boost: 0.78, style: 0.35, use_speaker_boost: true }
+      })
+    });
+    if (!res.ok) throw new Error(`EL ${res.status}`);
+    const blob = await res.blob();
+    return URL.createObjectURL(blob);
+  } catch(e) {
+    console.warn('ElevenLabs error:', e);
+    return null;
+  }
+}
+
+function playVoiceover(url) {
+  return new Promise(resolve => {
+    if (!url) { resolve(); return; }
+    currentAudio = new Audio(url);
+    currentAudio.volume = 0.92;
+    currentAudio.addEventListener('ended', resolve);
+    currentAudio.addEventListener('error', resolve);
+    currentAudio.play().catch(resolve);
+  });
+}
+
+function stopVoiceover() {
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+}
 
 // ═══════════════════════════════════════════════════
 //  CANVAS SETUP
@@ -218,10 +294,10 @@ const cat=document.getElementById('cv-at'),xat=cat.getContext('2d');
 const ccf=document.getElementById('cv-cf'),xcf=ccf.getContext('2d');
 const ccr=document.getElementById('cv-cur'),xcr=ccr.getContext('2d');
 function resz(){[cbg,cfx,cat,ccf,ccr].forEach(c=>{c.width=innerWidth;c.height=innerHeight;})}
-resz();window.addEventListener('resize',resz);
+resz(); window.addEventListener('resize',resz);
 
 // ═══════════════════════════════════════════════════
-//  AUDIO ENGINE  — rich ambient + reveal music
+//  AUDIO ENGINE  (ambient + reveal music)
 // ═══════════════════════════════════════════════════
 const AE={
   ctx:null,master:null,rev:null,nodes:[],melT:null,amb:false,
@@ -230,107 +306,59 @@ const AE={
     if(this.ctx)return;
     this.ctx=new(window.AudioContext||window.webkitAudioContext)();
     this.ctx.resume();
-    const cmp=this.ctx.createDynamicsCompressor();
-    cmp.threshold.value=-18;cmp.knee.value=12;cmp.ratio.value=4;
-    cmp.connect(this.ctx.destination);
-    this.master=this.ctx.createGain();this.master.gain.value=0;
-    this.master.connect(cmp);
-    // Convolution reverb
+    const cmp=this.ctx.createDynamicsCompressor();cmp.threshold.value=-18;cmp.knee.value=12;cmp.ratio.value=4;cmp.connect(this.ctx.destination);
+    this.master=this.ctx.createGain();this.master.gain.value=0;this.master.connect(cmp);
     this.rev=this.ctx.createConvolver();
-    const rate=this.ctx.sampleRate,len=rate*4;
-    const ir=this.ctx.createBuffer(2,len,rate);
+    const rate=this.ctx.sampleRate,len=rate*4,ir=this.ctx.createBuffer(2,len,rate);
     for(let ch=0;ch<2;ch++){const d=ir.getChannelData(ch);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.5);}
-    this.rev.buffer=ir;
-    const rg=this.ctx.createGain();rg.gain.value=.42;
-    this.rev.connect(rg);rg.connect(this.master);
+    this.rev.buffer=ir;const rg=this.ctx.createGain();rg.gain.value=.42;this.rev.connect(rg);rg.connect(this.master);
   },
-
   _o(f,t='sine',d=0){const o=this.ctx.createOscillator();o.type=t;o.frequency.value=f;o.detune.value=d;return o;},
 
   startAmbient(){
     if(!this.ctx)return;this.amb=true;
     this.master.gain.linearRampToValueAtTime(.72,this.ctx.currentTime+5);
-    // Sub drones with natural beating
     [[55,0],[55,9],[73.4,-4],[110,0]].forEach(([f,d])=>{const o=this._o(f,'sine',d),g=this.ctx.createGain();g.gain.value=.062;o.connect(g);g.connect(this.master);g.connect(this.rev);o.start();this.nodes.push(o);});
-    // Lush pad
     [[220,3],[330,-4],[440,6],[165,0],[247,-2]].forEach(([f,d])=>{const o=this._o(f,'triangle',d),g=this.ctx.createGain();g.gain.value=.02;o.connect(g);g.connect(this.rev);o.start();this.nodes.push(o);});
-    // Shimmer with tremolo
     [[1760,.4],[2200,.58],[1320,.32]].forEach(([f,r])=>{const o=this._o(f,'sine'),lfo=this._o(r,'sine'),lg=this.ctx.createGain(),g=this.ctx.createGain();lg.gain.value=.006;g.gain.value=.007;lfo.connect(lg);lg.connect(g.gain);o.connect(g);g.connect(this.rev);o.start();lfo.start();this.nodes.push(o,lfo);});
     this._mel();
   },
-
   _mel(){
     if(!this.amb||!this.ctx)return;
     const sc=[82.41,98,110,123.47,146.83,164.81,196,220,246.94,293.66,329.63,392,440];
     const f=sc[Math.floor(Math.random()*sc.length)]*(Math.random()<.28?2:1);
-    const o=this._o(f,'triangle'),g=this.ctx.createGain(),fl=this.ctx.createBiquadFilter();
-    fl.type='lowpass';fl.frequency.value=950;
+    const o=this._o(f,'triangle'),g=this.ctx.createGain(),fl=this.ctx.createBiquadFilter();fl.type='lowpass';fl.frequency.value=950;
     const now=this.ctx.currentTime,dur=1.8+Math.random()*2.5;
     g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(.052,now+.18);g.gain.exponentialRampToValueAtTime(.001,now+dur);
-    o.connect(fl);fl.connect(g);g.connect(this.rev);g.connect(this.master);
-    o.start(now);o.stop(now+dur+.1);
+    o.connect(fl);fl.connect(g);g.connect(this.rev);g.connect(this.master);o.start(now);o.stop(now+dur+.1);
     this.melT=setTimeout(()=>this._mel(),(1.2+Math.random()*3.8)*1000);
   },
-
   fade(to,sec){if(!this.ctx||!this.master)return;this.master.gain.linearRampToValueAtTime(to,this.ctx.currentTime+sec);},
-
-  stopAmbient(){
-    this.amb=false;clearTimeout(this.melT);if(!this.ctx)return;
-    this.master.gain.linearRampToValueAtTime(0,this.ctx.currentTime+1.5);
-    this.nodes.forEach(o=>{try{o.stop(this.ctx.currentTime+2);}catch(e){}});
-    this.nodes=[];
-  },
+  stopAmbient(){this.amb=false;clearTimeout(this.melT);if(!this.ctx)return;this.master.gain.linearRampToValueAtTime(0,this.ctx.currentTime+1.5);this.nodes.forEach(o=>{try{o.stop(this.ctx.currentTime+2);}catch(e){}});this.nodes=[];},
 
   heartbeat(vol=.25){
     if(!this.ctx)return;const now=this.ctx.currentTime;
     [[now,vol,60],[now+.08,vol*.6,45],[now+.3,vol*.82,58],[now+.37,vol*.5,42]].forEach(([t,v,f])=>{
-      const o=this._o(f,'sine'),g=this.ctx.createGain();
-      g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.035);g.gain.exponentialRampToValueAtTime(.001,t+.48);
-      o.connect(g);g.connect(this.master);o.start(t);o.stop(t+.6);
+      const o=this._o(f,'sine'),g=this.ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.035);g.gain.exponentialRampToValueAtTime(.001,t+.48);o.connect(g);g.connect(this.master);o.start(t);o.stop(t+.6);
     });
   },
-
   tension(){
     if(!this.ctx)return;const now=this.ctx.currentTime;
-    // Rising glissando
-    const o=this._o(80,'sawtooth'),g=this.ctx.createGain(),fl=this.ctx.createBiquadFilter();
-    fl.type='bandpass';fl.frequency.value=600;fl.Q.value=4;
+    const o=this._o(80,'sawtooth'),g=this.ctx.createGain(),fl=this.ctx.createBiquadFilter();fl.type='bandpass';fl.frequency.value=600;fl.Q.value=4;
     o.frequency.setValueAtTime(80,now);o.frequency.exponentialRampToValueAtTime(1400,now+2.3);
     g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(.085,now+.3);g.gain.linearRampToValueAtTime(0,now+2.5);
     o.connect(fl);fl.connect(g);g.connect(this.rev);g.connect(this.master);o.start(now);o.stop(now+2.7);
-    // High whine
     const o2=this._o(1800,'sine'),g2=this.ctx.createGain();
     g2.gain.setValueAtTime(0,now);g2.gain.linearRampToValueAtTime(.025,now+.5);g2.gain.linearRampToValueAtTime(.055,now+2.1);g2.gain.linearRampToValueAtTime(0,now+2.5);
     o2.frequency.linearRampToValueAtTime(3400,now+2.3);o2.connect(g2);g2.connect(this.master);o2.start(now);o2.stop(now+2.7);
   },
-
   boom(freqs){
     if(!this.ctx)return;const now=this.ctx.currentTime;
-    // Sub thud
-    const bo=this._o(32,'sine'),bg=this.ctx.createGain();
-    bg.gain.setValueAtTime(.55,now);bg.gain.exponentialRampToValueAtTime(.001,now+2);
-    bo.frequency.exponentialRampToValueAtTime(14,now+1.2);
-    bo.connect(bg);bg.connect(this.master);bo.start(now);bo.stop(now+2.2);
-    // Noise impact
-    const buf=this.ctx.createBuffer(1,this.ctx.sampleRate*.18,this.ctx.sampleRate);
-    const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2);
-    const ns=this.ctx.createBufferSource();ns.buffer=buf;
-    const ng=this.ctx.createGain(),nf=this.ctx.createBiquadFilter();
-    nf.type='lowpass';nf.frequency.value=320;ng.gain.value=.38;
-    ns.connect(nf);nf.connect(ng);ng.connect(this.master);ns.start(now);
-    // House chord arpeggio
-    freqs.forEach((f,i)=>{
-      const o=this._o(f,'triangle',(Math.random()-.5)*10),g=this.ctx.createGain();
-      const t=now+i*.06;
-      g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.12);g.gain.linearRampToValueAtTime(.065,t+1.2);g.gain.exponentialRampToValueAtTime(.001,t+6);
-      o.connect(g);g.connect(this.rev);g.connect(this.master);o.start(t);o.stop(t+6.5);
-    });
-    // Shimmer overtones
-    [880,1320,1760,2640].forEach((f,i)=>{
-      const o=this._o(f,'sine'),g=this.ctx.createGain();const t=now+.08+i*.07;
-      g.gain.setValueAtTime(.048,t);g.gain.exponentialRampToValueAtTime(.001,t+4);
-      o.connect(g);g.connect(this.rev);o.start(t);o.stop(t+4.5);
-    });
+    const bo=this._o(32,'sine'),bg=this.ctx.createGain();bg.gain.setValueAtTime(.55,now);bg.gain.exponentialRampToValueAtTime(.001,now+2);bo.frequency.exponentialRampToValueAtTime(14,now+1.2);bo.connect(bg);bg.connect(this.master);bo.start(now);bo.stop(now+2.2);
+    const buf=this.ctx.createBuffer(1,this.ctx.sampleRate*.18,this.ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2);
+    const ns=this.ctx.createBufferSource();ns.buffer=buf;const ng2=this.ctx.createGain(),nf=this.ctx.createBiquadFilter();nf.type='lowpass';nf.frequency.value=320;ng2.gain.value=.38;ns.connect(nf);nf.connect(ng2);ng2.connect(this.master);ns.start(now);
+    freqs.forEach((f,i)=>{const o=this._o(f,'triangle',(Math.random()-.5)*10),g=this.ctx.createGain();const t=now+i*.06;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.12);g.gain.linearRampToValueAtTime(.065,t+1.2);g.gain.exponentialRampToValueAtTime(.001,t+6);o.connect(g);g.connect(this.rev);g.connect(this.master);o.start(t);o.stop(t+6.5);});
+    [880,1320,1760,2640].forEach((f,i)=>{const o=this._o(f,'sine'),g=this.ctx.createGain();const t=now+.08+i*.07;g.gain.setValueAtTime(.048,t);g.gain.exponentialRampToValueAtTime(.001,t+4);o.connect(g);g.connect(this.rev);o.start(t);o.stop(t+4.5);});
     setTimeout(()=>{if(this.amb)this.master.gain.linearRampToValueAtTime(.72,this.ctx.currentTime+3);},2200);
   }
 };
@@ -343,16 +371,9 @@ const trail=[];
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 (function curLoop(){
   xcr.clearRect(0,0,ccr.width,ccr.height);
-  trail.push({x:mx,y:my,l:1});
-  if(trail.length>32)trail.shift();
-  trail.forEach((p,i)=>{
-    p.l-=.032;if(p.l<=0)return;
-    const r=5*(i/trail.length)*p.l;
-    xcr.beginPath();xcr.arc(p.x,p.y,r,0,Math.PI*2);
-    xcr.fillStyle=`rgba(201,168,76,${p.l*(i/trail.length)*.75})`;xcr.fill();
-  });
-  const g=xcr.createRadialGradient(mx,my,0,mx,my,12);
-  g.addColorStop(0,'rgba(255,248,210,.95)');g.addColorStop(.4,'rgba(201,168,76,.65)');g.addColorStop(1,'transparent');
+  trail.push({x:mx,y:my,l:1});if(trail.length>32)trail.shift();
+  trail.forEach((p,i)=>{p.l-=.032;if(p.l<=0)return;xcr.beginPath();xcr.arc(p.x,p.y,5*(i/trail.length)*p.l,0,Math.PI*2);xcr.fillStyle=`rgba(201,168,76,${p.l*(i/trail.length)*.75})`;xcr.fill();});
+  const g=xcr.createRadialGradient(mx,my,0,mx,my,12);g.addColorStop(0,'rgba(255,248,210,.95)');g.addColorStop(.4,'rgba(201,168,76,.65)');g.addColorStop(1,'transparent');
   xcr.beginPath();xcr.arc(mx,my,12,0,Math.PI*2);xcr.fillStyle=g;xcr.shadowBlur=22;xcr.shadowColor='rgba(201,168,76,.8)';xcr.fill();xcr.shadowBlur=0;
   requestAnimationFrame(curLoop);
 })();
@@ -362,9 +383,8 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 // ═══════════════════════════════════════════════════
 document.addEventListener('mousemove',e=>{
   document.querySelectorAll('.nc:not(.bye):not(.cho)').forEach(c=>{
-    const r=c.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
-    const dx=e.clientX-cx,dy=e.clientY-cy,dist=Math.hypot(dx,dy);
-    if(dist<180){const rx=(dy/r.height)*20,ry=-(dx/r.width)*20;c.style.transform=`perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${1+Math.max(0,(180-dist)/1800)})`;}
+    const r=c.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,dist=Math.hypot(e.clientX-cx,e.clientY-cy);
+    if(dist<180){c.style.transform=`perspective(600px) rotateX(${(e.clientY-cy)/r.height*20}deg) rotateY(${-(e.clientX-cx)/r.width*20}deg) scale(${1+Math.max(0,(180-dist)/1800)})`;}
     else c.style.transform='';
   });
 });
@@ -375,18 +395,13 @@ document.addEventListener('mousemove',e=>{
 const ST=Array.from({length:260},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+.2,a:Math.random()*.75+.25,ts:Math.random()*.025+.004,to:Math.random()*Math.PI*2,dx:(Math.random()-.5)*.07}));
 const NBS=[{c:'rgba(65,105,225,',ox:.12,oy:.18,tx:.9,ty:.65},{c:'rgba(155,89,182,',ox:.82,oy:.72,tx:1.2,ty:1.05},{c:'rgba(0,180,209,',ox:.48,oy:.08,tx:.85,ty:1.3},{c:'rgba(201,168,76,',ox:.28,oy:.82,tx:1.1,ty:.75},{c:'rgba(100,60,180,',ox:.65,oy:.45,tx:1.35,ty:.95}];
 let ft=0;
-(function bgl(){
-  xbg.clearRect(0,0,cbg.width,cbg.height);const t=ft*.00055;
-  NBS.forEach(n=>{const x=cbg.width*(n.ox+.35*Math.sin(t*n.tx)),y=cbg.height*(n.oy+.28*Math.cos(t*n.ty));const g=xbg.createRadialGradient(x,y,0,x,y,cbg.width*.42);g.addColorStop(0,n.c+'.045)');g.addColorStop(1,'transparent');xbg.fillStyle=g;xbg.fillRect(0,0,cbg.width,cbg.height);});
-  ST.forEach(s=>{const a=s.a*(.4+.6*Math.sin(ft*s.ts+s.to));xbg.beginPath();xbg.arc(s.x,s.y,s.r,0,Math.PI*2);xbg.fillStyle=`rgba(255,255,255,${a})`;xbg.fill();s.x+=s.dx;if(s.x<0)s.x=cbg.width;if(s.x>cbg.width)s.x=0;});
-  ft++;requestAnimationFrame(bgl);
-})();
+(function bgl(){xbg.clearRect(0,0,cbg.width,cbg.height);const t=ft*.00055;NBS.forEach(n=>{const x=cbg.width*(n.ox+.35*Math.sin(t*n.tx)),y=cbg.height*(n.oy+.28*Math.cos(t*n.ty));const g=xbg.createRadialGradient(x,y,0,x,y,cbg.width*.42);g.addColorStop(0,n.c+'.045)');g.addColorStop(1,'transparent');xbg.fillStyle=g;xbg.fillRect(0,0,cbg.width,cbg.height);});ST.forEach(s=>{const a=s.a*(.4+.6*Math.sin(ft*s.ts+s.to));xbg.beginPath();xbg.arc(s.x,s.y,s.r,0,Math.PI*2);xbg.fillStyle=`rgba(255,255,255,${a})`;xbg.fill();s.x+=s.dx;if(s.x<0)s.x=cbg.width;if(s.x>cbg.width)s.x=0;});ft++;requestAnimationFrame(bgl);})();
 
 // ═══════════════════════════════════════════════════
 //  ORACLE VORTEX
 // ═══════════════════════════════════════════════════
 let von=false,vpts=[],vint=null;
-class VP{constructor(){const a=Math.random()*Math.PI*2,r=Math.random()*Math.max(innerWidth,innerHeight)*.7+100;this.x=innerWidth/2+Math.cos(a)*r;this.y=innerHeight/2+Math.sin(a)*r;this.angle=a;this.rad=r;this.rs=(.5+Math.random()*.8)*(Math.random()<.5?1:-1);this.pull=2+Math.random()*3;this.r=Math.random()*2+.5;this.a=Math.random()*.7+.3;this.c=`hsl(${45+Math.random()*20},80%,${60+Math.random()*20}%)`;this.dead=false;}tick(){this.rad-=this.pull;this.angle+=this.rs*(Math.PI/180);this.x=innerWidth/2+Math.cos(this.angle)*this.rad;this.y=innerHeight/2+Math.sin(this.angle)*this.rad;if(this.rad<8)this.dead=true;}draw(){xfx.beginPath();xfx.arc(this.x,this.y,this.r,0,Math.PI*2);xfx.fillStyle=this.c;xfx.globalAlpha=this.a*(Math.min(this.rad,80)/80);xfx.fill();xfx.globalAlpha=1;}}
+class VP{constructor(){const a=Math.random()*Math.PI*2,r=Math.random()*Math.max(innerWidth,innerHeight)*.7+100;this.x=innerWidth/2+Math.cos(a)*r;this.y=innerHeight/2+Math.sin(a)*r;this.angle=a;this.rad=r;this.rs=(.5+Math.random()*.8)*(Math.random()<.5?1:-1);this.pull=2+Math.random()*3;this.r=Math.random()*2+.5;this.a2=Math.random()*.7+.3;this.c=`hsl(${45+Math.random()*20},80%,${60+Math.random()*20}%)`;this.dead=false;}tick(){this.rad-=this.pull;this.angle+=this.rs*(Math.PI/180);this.x=innerWidth/2+Math.cos(this.angle)*this.rad;this.y=innerHeight/2+Math.sin(this.angle)*this.rad;if(this.rad<8)this.dead=true;}draw(){xfx.beginPath();xfx.arc(this.x,this.y,this.r,0,Math.PI*2);xfx.fillStyle=this.c;xfx.globalAlpha=this.a2*(Math.min(this.rad,80)/80);xfx.fill();xfx.globalAlpha=1;}}
 function startVortex(){von=true;vpts=[];vint=setInterval(()=>{for(let i=0;i<6;i++)vpts.push(new VP());},40);(function vl(){if(!von){xfx.clearRect(0,0,cfx.width,cfx.height);return;}xfx.clearRect(0,0,cfx.width,cfx.height);vpts=vpts.filter(p=>!p.dead);vpts.forEach(p=>{p.tick();p.draw();});requestAnimationFrame(vl);})();}
 function stopVortex(){clearInterval(vint);von=false;}
 
@@ -402,7 +417,7 @@ function cfl(){xcf.clearRect(0,0,ccf.width,ccf.height);CP=CP.filter(p=>!p.dead()
 //  ATMOSPHERIC FX
 // ═══════════════════════════════════════════════════
 let atOn=false,atType='',atD={};
-function startAtmo(type,color){cat.classList.add('on');atOn=true;atType=type;atD={t:0,color,pts:[],bolts:[],rip:[]};atLoop();}
+function startAtmo(type,color){cat.classList.add('on');atOn=true;atType=type;atD={t:0,color,rip:[],bolts:[]};atLoop();}
 function stopAtmo(){atOn=false;cat.classList.remove('on');xat.clearRect(0,0,cat.width,cat.height);}
 function atLoop(){if(!atOn)return;xat.clearRect(0,0,cat.width,cat.height);atD.t++;if(atType==='stars')_stars();if(atType==='water')_water();if(atType==='lightning')_lightning();if(atType==='aurora')_aurora();requestAnimationFrame(atLoop);}
 let _ss=[];
@@ -424,8 +439,7 @@ let rT=0,rD=false;
   if(p>.2){const a=Math.min((p-.2)/.5,1);RX.strokeStyle=`rgba(201,168,76,${a*.75})`;RX.lineWidth=1.5;RX.setLineDash([4,4]);RX.beginPath();RX.arc(RM,RM,RM*.65,-Math.PI/2,-Math.PI/2+a*Math.PI*2*-1);RX.stroke();}
   if(p>.38){const sp=Math.min((p-.38)/.3,1);const pts=[];for(let i=0;i<5;i++){const a=(i*4/5)*Math.PI*2-Math.PI/2;pts.push({x:RM+Math.cos(a)*RM*.65,y:RM+Math.sin(a)*RM*.65});}RX.strokeStyle=`rgba(201,168,76,${sp*.45})`;RX.lineWidth=1;RX.setLineDash([]);RX.beginPath();RX.moveTo(pts[0].x,pts[0].y);for(let i=1;i<=Math.min(Math.floor(sp*10),10);i++)RX.lineTo(pts[i%5].x,pts[i%5].y);RX.stroke();}
   if(p>.55){const rc=Math.floor((p-.55)/.45*RUNES.length);RX.setLineDash([]);for(let i=0;i<Math.min(rc,RUNES.length);i++){const a=(i/RUNES.length)*Math.PI*2-Math.PI/2;RX.font=`${RM*.072}px serif`;RX.fillStyle=`rgba(201,168,76,${.28+.18*Math.sin(rT*.06+i)})`;RX.textAlign='center';RX.textBaseline='middle';RX.fillText(RUNES[i],RM+Math.cos(a)*RM*.82,RM+Math.sin(a)*RM*.82);}}
-  const pulse=.5+.5*Math.sin(rT*.14),grd=RX.createRadialGradient(RM,RM,0,RM,RM,RM*.22);
-  grd.addColorStop(0,`rgba(201,168,76,${p*.32*pulse})`);grd.addColorStop(1,'transparent');RX.fillStyle=grd;RX.setLineDash([]);RX.fillRect(0,0,RS,RS);
+  const pulse=.5+.5*Math.sin(rT*.14),grd=RX.createRadialGradient(RM,RM,0,RM,RM,RM*.22);grd.addColorStop(0,`rgba(201,168,76,${p*.32*pulse})`);grd.addColorStop(1,'transparent');RX.fillStyle=grd;RX.setLineDash([]);RX.fillRect(0,0,RS,RS);
   if(p>.72){const tp=(p-.72)/.28;RX.font=`bold ${RM*.13}px 'Cinzel',serif`;RX.fillStyle=`rgba(201,168,76,${tp*.9})`;RX.textAlign='center';RX.textBaseline='middle';RX.fillText('ORACLE',RM,RM);RX.font=`${RM*.042}px 'Orbitron',monospace`;RX.fillStyle=`rgba(201,168,76,${tp*.5})`;RX.fillText('HOUSE REVELATION',RM,RM+RM*.2);}
   if(p>=1){rD=true;setTimeout(()=>{document.getElementById('ritual').classList.add('out');setTimeout(()=>{document.getElementById('ritual').style.display='none';show('sel');AE.init();AE.startAmbient();},900);},700);return;}
   requestAnimationFrame(ritLoop);
@@ -448,108 +462,111 @@ function show(id){['sel','orc','verd','rev'].forEach(s=>document.getElementById(
 // ═══════════════════════════════════════════════════
 //  ACT I → II: CHOSEN CARD FLOAT
 // ═══════════════════════════════════════════════════
-function act1(name,el){
+function act1(name, el) {
   AE.init();
+  // Float chosen card to center
   const r=el.getBoundingClientRect(),dx=innerWidth/2-r.left-r.width/2,dy=innerHeight/2-r.top-r.height/2;
   el.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .5s,border-color .5s';
   el.style.transform=`translate(${dx}px,${dy}px) scale(1.35)`;el.style.borderColor='var(--gold)';el.style.boxShadow='0 0 70px rgba(201,168,76,.9)';el.style.zIndex='99';
   document.querySelectorAll('.nc').forEach(c=>{if(c!==el)setTimeout(()=>c.classList.add('bye'),Math.random()*380);});
   setTimeout(()=>{el.style.transition='transform .3s ease,opacity .3s';el.style.transform=`translate(${dx}px,${dy}px) scale(0)`;el.style.opacity='0';},580);
-  setTimeout(()=>{show('orc');act2(name);startVortex();},980);
+  setTimeout(()=>{show('orc');act2(name);},980);
 }
 
 // ═══════════════════════════════════════════════════
-//  ACT II: ORACLE SCANNING
+//  ACT II: ORACLE + VOICEOVER  (reveal waits for audio to end)
 // ═══════════════════════════════════════════════════
-function act2(name){
-  document.getElementById('oi').textContent=name[0].toUpperCase();
-  document.getElementById('on').textContent=name.toUpperCase();
-  const msgs=['SCANNING AETHERIC SIGNATURE...','CROSS-REFERENCING SOUL MATRIX...','CONSULTING THE ANCIENT CODEX...','HOUSE RESONANCE LOCK CONFIRMED...','DESTINY CONFIRMED ✦'];
-  const st=document.getElementById('os');let i=0;
-  const iv=setInterval(()=>{i++;if(i<msgs.length){st.style.opacity='0';setTimeout(()=>{st.textContent=msgs[i];st.style.opacity='1';},240);}else{clearInterval(iv);stopVortex();setTimeout(()=>act25(name),700);}},700);
+function act2(name) {
+  document.getElementById('oi').textContent = name[0].toUpperCase();
+  document.getElementById('on').textContent  = name.toUpperCase();
+  document.getElementById('os').textContent  = 'SCANNING AETHERIC SIGNATURE...';
+
+  startVortex();
+
+  // Fetch voiceover immediately — runs in parallel with animation
+  const voicePromise = fetchVoiceover(name);
+
+  // Status message cycle (keeps cycling until audio finishes)
+  const msgs = [
+    'SCANNING AETHERIC SIGNATURE...',
+    'CROSS-REFERENCING SOUL MATRIX...',
+    'CONSULTING THE ANCIENT CODEX...',
+    'HOUSE RESONANCE DETECTED...',
+    'ALIGNING CELESTIAL COORDINATES...',
+    'DESTINY LOCK IN PROGRESS...',
+    'RESONANCE CONFIRMED...',
+    'FATE SEALED ✦'
+  ];
+  let msgIdx = 0;
+  const st = document.getElementById('os');
+  const msgInterval = setInterval(() => {
+    msgIdx = (msgIdx + 1) % msgs.length;
+    st.style.opacity = '0';
+    setTimeout(() => { st.textContent = msgs[msgIdx]; st.style.opacity = '1'; }, 240);
+  }, 1100);
+
+  // Fade ambient music down so voiceover is clear
+  AE.fade(0.18, 1.2);
+
+  // Once audio URL is ready, play it and show the "speaking" indicator
+  voicePromise.then(async (url) => {
+    document.getElementById('vo-bar').classList.add('on');
+    await playVoiceover(url); // WAITS until audio ends
+    document.getElementById('vo-bar').classList.remove('on');
+    clearInterval(msgInterval);
+    stopVortex();
+    // Transition to verdict immediately when voice ends
+    act25(name);
+  });
 }
 
 // ═══════════════════════════════════════════════════
 //  ACT II.5: DRAMATIC VERDICT BUILDUP
 // ═══════════════════════════════════════════════════
-function act25(name){
+function act25(name) {
   show('verd');
-  AE.fade(.1,.8); // near-silence for tension
+  AE.fade(0.08, 0.6);
 
   const vn=document.getElementById('vn'),vm=document.getElementById('vm'),vh=document.getElementById('vh'),vc=document.getElementById('vc');
   vn.textContent=name.toUpperCase();vm.textContent='';vh.innerHTML='<span id="vq">???</span>';
-  vn.classList.remove('on');vm.classList.remove('on');vh.classList.remove('on');vc.classList.remove('on');
+  [vn,vm,vh,vc].forEach(el=>el.classList.remove('on'));
   document.getElementById('verd').classList.remove('lb-on');
 
-  // Letterbox cinematic bars
   setTimeout(()=>document.getElementById('verd').classList.add('lb-on'),50);
-  // Name rises
   setTimeout(()=>vn.classList.add('on'),350);
-  // Heartbeat 1
-  setTimeout(()=>{AE.heartbeat(.22);vn.classList.add('pulse');setTimeout(()=>vn.classList.remove('pulse'),400);},800);
-  // Message
-  setTimeout(()=>{vm.textContent='THE ORACLE HAS SPOKEN...';vm.classList.add('on');},1150);
-  // Heartbeat 2 (louder)
-  setTimeout(()=>{AE.heartbeat(.34);vn.classList.add('pulse');setTimeout(()=>vn.classList.remove('pulse'),400);},1600);
-  // "Your house is..."
-  setTimeout(()=>{vm.style.opacity='0';setTimeout(()=>{vm.textContent='YOUR HOUSE IS...';vm.style.opacity='1';},300);},2000);
-  setTimeout(()=>vh.classList.add('on'),2300);
-  // Rising tension
-  setTimeout(()=>AE.tension(),2550);
-  // Crack of light
-  setTimeout(()=>vc.classList.add('on'),3300);
-  // EXPLOSION
-  setTimeout(()=>act3(name),4050);
+  setTimeout(()=>{AE.heartbeat(.22);vn.classList.add('pulse');setTimeout(()=>vn.classList.remove('pulse'),400);},750);
+  setTimeout(()=>{vm.textContent='THE ORACLE HAS SPOKEN...';vm.classList.add('on');},1100);
+  setTimeout(()=>{AE.heartbeat(.34);vn.classList.add('pulse');setTimeout(()=>vn.classList.remove('pulse'),400);},1550);
+  setTimeout(()=>{vm.style.opacity='0';setTimeout(()=>{vm.textContent='YOUR HOUSE IS...';vm.style.opacity='1';},300);},1950);
+  setTimeout(()=>vh.classList.add('on'),2250);
+  setTimeout(()=>AE.tension(),2450);
+  setTimeout(()=>vc.classList.add('on'),3200);
+  setTimeout(()=>act3(name),3950);
 }
 
 // ═══════════════════════════════════════════════════
 //  ACT III: HOUSE REVEAL
 // ═══════════════════════════════════════════════════
-function act3(name){
+function act3(name) {
   const hk=NM[name.toLowerCase()],hd=H[hk];
-
-  // Screen shake
   document.body.classList.add('shake');setTimeout(()=>document.body.classList.remove('shake'),700);
-
-  // Audio boom + chord
   AE.boom(hd.chord);
-
-  // Color flash
-  const fl=document.getElementById('flash');fl.style.background=hd.color;fl.classList.add('bang');
-  setTimeout(()=>{fl.classList.add('fade');fl.classList.remove('bang');},65);
-  setTimeout(()=>fl.classList.remove('fade'),1250);
-
-  // Wire content
+  const fl=document.getElementById('flash');fl.style.background=hd.color;fl.classList.add('bang');setTimeout(()=>{fl.classList.add('fade');fl.classList.remove('bang');},65);setTimeout(()=>fl.classList.remove('fade'),1250);
   document.getElementById('bi').src=hd.img;
   document.getElementById('bg2').style.background=hd.glow;
   document.getElementById('rb').style.background=`radial-gradient(ellipse at 50% 60%,${hd.glow} 0%,transparent 68%)`;
   document.getElementById('mb').textContent=`HOUSE ${hk}  ·  ${hd.members.filter(m=>m!==name).join('  ·  ')}`;
   document.getElementById('wt').innerHTML=`WELCOME,&nbsp;<span style="color:${hd.color};text-shadow:0 0 35px ${hd.glow}">${name.toUpperCase()}</span><br><small style="font-size:.52em;letter-spacing:.38em;opacity:.65;font-family:'Orbitron',monospace">${hd.tagline}</small>`;
-
   document.getElementById('verd').classList.remove('lb-on');
   show('rev');
-
-  // Shockwaves
   [0,260,520].forEach((d,i)=>{setTimeout(()=>{const sw=document.createElement('div');sw.className='shw';sw.style.cssText=`border:${2.2-i*.6}px solid ${hd.color};`;document.getElementById('rev').appendChild(sw);setTimeout(()=>sw.remove(),2200);},d+60);});
-
-  // Animate banner
   requestAnimationFrame(()=>requestAnimationFrame(()=>{document.getElementById('rb').classList.add('on');document.getElementById('bw').classList.add('on');}));
-
-  // Banner decryption
   setupDecrypt(hd.color);
-
-  // Atmospheric FX
   setTimeout(()=>startAtmo(hd.atmo,hd.color),380);
-
-  // Particle house name
   setTimeout(()=>spawnName(hk,hd.color),220);
-
-  // Text reveals
   setTimeout(()=>document.getElementById('mb').classList.add('on'),950);
   setTimeout(()=>document.getElementById('wt').classList.add('on'),1080);
   setTimeout(()=>document.getElementById('ag').classList.add('on'),1850);
-
-  // Confetti
   setTimeout(()=>burst(hd.particles),200);
 }
 
@@ -566,11 +583,9 @@ function setupDecrypt(color){
 //  PARTICLE-FORMED HOUSE NAME
 // ═══════════════════════════════════════════════════
 function spawnName(text,color){
-  const c=document.getElementById('hnc'),ctx=c.getContext('2d');
-  c.width=Math.min(innerWidth*.9,860);c.height=80;
-  const off=document.createElement('canvas');off.width=c.width;off.height=c.height;
-  const octx=off.getContext('2d');octx.fillStyle='#fff';
-  octx.font=`bold ${Math.min(c.width/text.length*.82,54)}px 'Cinzel',serif`;octx.textAlign='center';octx.textBaseline='middle';octx.fillText(text,c.width/2,c.height/2);
+  const c=document.getElementById('hnc'),ctx=c.getContext('2d');c.width=Math.min(innerWidth*.9,860);c.height=80;
+  const off=document.createElement('canvas');off.width=c.width;off.height=c.height;const octx=off.getContext('2d');
+  octx.fillStyle='#fff';octx.font=`bold ${Math.min(c.width/text.length*.82,54)}px 'Cinzel',serif`;octx.textAlign='center';octx.textBaseline='middle';octx.fillText(text,c.width/2,c.height/2);
   const id=octx.getImageData(0,0,c.width,c.height).data,pts=[];
   for(let y=0;y<c.height;y+=3)for(let x=0;x<c.width;x+=3)if(id[(y*c.width+x)*4+3]>128)pts.push({tx:x,ty:y});
   const parts=pts.map(p=>({x:Math.random()*c.width,y:Math.random()*c.height+80,tx:p.tx,ty:p.ty,vx:(Math.random()-.5)*5,vy:(Math.random()-.5)*5,l:0}));
@@ -582,13 +597,15 @@ function spawnName(text,color){
 //  RESET
 // ═══════════════════════════════════════════════════
 function doReset(){
+  stopVoiceover();
   CP=[];xcf.clearRect(0,0,ccf.width,ccf.height);CA=false;
   stopAtmo();AE.fade(.72,1.5);
   ['rb','bw','wt','ag','mb'].forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById('bd').classList.remove('gone');
   document.getElementById('hnc').getContext('2d').clearRect(0,0,innerWidth,80);
-  ['vn','vm','vh'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  ['vn','vm','vh','vc'].forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById('verd').classList.remove('lb-on');
+  document.getElementById('vo-bar').classList.remove('on');
   buildGrid();srch.value='';show('sel');
 }
 </script>
